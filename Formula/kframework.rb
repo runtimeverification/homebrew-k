@@ -19,7 +19,7 @@ class Kframework < Formula
   depends_on "gmp"
   depends_on "jemalloc"
   depends_on "libyaml"
-  depends_on "llvm@13"
+  depends_on "llvm@17"
   depends_on "mpfr"
   depends_on "openjdk"
   depends_on "secp256k1"
@@ -37,7 +37,7 @@ class Kframework < Formula
     ENV.deparallelize do
         # This is a hack to get LLVM off the PATH when building:
         # https://github.com/Homebrew/homebrew-core/issues/122863
-        with_env(PATH: ENV["PATH"].sub("#{Formula["llvm@13"].bin}:", "")) do
+        with_env(PATH: ENV["PATH"].sub("#{Formula["llvm@17"].bin}:", "")) do
 
         # For both components, we need to run the stack phases _outside_ of
         # Maven to prevent connections from timing out.
