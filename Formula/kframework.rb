@@ -1,13 +1,9 @@
 class Kframework < Formula
   desc "K Framework Tools 5.0"
   homepage ""
-  url "https://github.com/runtimeverification/k/releases/download/v6.0.190/kframework-6.0.190-src.tar.gz"
-  sha256 "6e2174a921bdd14298e94443d12d4e58a0438294c49c9edd0e58e87a132d3b6e"
-  bottle do
-    root_url "https://github.com/runtimeverification/k/releases/download/v6.0.190/"
-    rebuild 637
-    sha256 ventura: "ffa4fa3a51e2a649bca0ab82f59ecf7102daaa553e6deb1d15dc4519ada46551"
-  end
+  url "https://github.com/runtimeverification/k.git",
+    tag: "v6.0.190"
+
   depends_on "cmake" => :build
   depends_on "haskell-stack" => :build
   depends_on "maven" => :build
@@ -19,7 +15,7 @@ class Kframework < Formula
   depends_on "gmp"
   depends_on "jemalloc"
   depends_on "libyaml"
-  depends_on "llvm"
+  depends_on "llvm@13"
   depends_on "mpfr"
   depends_on "openjdk"
   depends_on "secp256k1"
@@ -37,7 +33,7 @@ class Kframework < Formula
     ENV.deparallelize do
         # This is a hack to get LLVM off the PATH when building:
         # https://github.com/Homebrew/homebrew-core/issues/122863
-        with_env(PATH: ENV["PATH"].sub("#{Formula["llvm"].bin}:", "")) do
+        with_env(PATH: ENV["PATH"].sub("#{Formula["llvm@13"].bin}:", "")) do
 
         # For both components, we need to run the stack phases _outside_ of
         # Maven to prevent connections from timing out.
