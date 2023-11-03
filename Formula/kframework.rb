@@ -4,7 +4,7 @@ class Kframework < Formula
   url "https://github.com/runtimeverification/k.git",
     tag: "v6.0.190"
 
-  option "with-test", "Run K integration test suite"
+  option "with-tests", "Run K integration test suite"
 
   depends_on "cmake" => :build
   depends_on "haskell-stack" => :build
@@ -51,12 +51,12 @@ class Kframework < Formula
       end
     end
 
-    maven_args = ["mvn", "package", "-Dproject.build.type=FastBuild", "-Dmaven.wagon.httpconnectionManager.ttlSeconds=30"]
-    if build.without? "test"
-      maven_args += ["-DskipTests"]
+    system "mvn", "package", "-DskipTests", "-Dproject.build.type=FastBuild", "-Dmaven.wagon.httpconnectionManager.ttlSeconds=30"
+    
+    if build.with? "tests"
+      system "mvn", "verify", "-U"
     end
 
-    system *maven_args
     system "package/package"
   end
 
