@@ -55,7 +55,7 @@ class Kframework < Formula
     system "mvn", "package", "-DskipTests", "-Dproject.build.type=FastBuild", "-Dmaven.wagon.httpconnectionManager.ttlSeconds=30"
     
     if build.with? "tests"
-      system "mvn", "verify", "-U"
+      system "mvn", "verify", "-U", "-DcoreFactor=0.3"
     end
 
     system "package/package"
