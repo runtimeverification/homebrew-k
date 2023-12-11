@@ -1,8 +1,9 @@
 class Kframework < Formula
   desc "K Framework Tools 5.0"
   homepage ""
+
   url "https://github.com/runtimeverification/k.git",
-    tag: "v6.0.190"
+    tag: "v6.1.51"
 
   option "with-tests", "Run K integration test suite"
 
