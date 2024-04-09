@@ -39,17 +39,13 @@ class Kframework < Formula
         # https://github.com/Homebrew/homebrew-core/issues/122863
         with_env(PATH: ENV["PATH"].sub("#{Formula["llvm"].bin}:", "")) do
 
-        # For both components, we need to run the stack phases _outside_ of
+        # We need to run the stack phases _outside_ of
         # Maven to prevent connections from timing out.
         cd "haskell-backend/src/main/native/haskell-backend" do
           system "stack", "setup"
           system "stack", "build"
         end
 
-        cd "hs-backend-booster/src/main/native/hs-backend-booster" do
-          system "stack", "setup"
-          system "stack", "build"
-        end
       end
     end
 
