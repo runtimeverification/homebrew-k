@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-12, macos-13]
+        os: [macos-14]
 
     steps:
     - name: 'Check out code'
@@ -23,9 +23,6 @@ jobs:
         brew tap kframework/k file://$(pwd)
 
         brew install --build-from-source --verbose kframework 
-
-        brew install --build-from-source --verbose cryptopp@8.3.0
-        brew unlink cryptopp@8.3.0
 
         brew install --build-from-source --verbose cryptopp@8.6.0 
         brew unlink cryptopp@8.6.0
