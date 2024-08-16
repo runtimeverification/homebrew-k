@@ -1,12 +1,12 @@
 class Kframework < Formula
   desc "K Framework Tools 5.0"
   homepage ""
-  url "https://github.com/runtimeverification/k/releases/download/v7.1.110/kframework-7.1.110-src.tar.gz"
-  sha256 "33c30f1af599168c1e8a91be9716deb05c2fc0f0ffe4360d92c13ec223103512"
+  url "https://github.com/runtimeverification/k/releases/download/v7.1.111/kframework-7.1.111-src.tar.gz"
+  sha256 "69afe51dbbb16a4a2b6b9ccbaf40e9fec504ef5a045337b47ea3e9c8a151670e"
   bottle do
-    root_url "https://github.com/runtimeverification/k/releases/download/v7.1.110/"
-    rebuild 1098
-    sha256 arm64_sonoma: "acea4c2ceda39a16b22bfe4e87a4a3924c4e716b927f1a8a7d61b41c961c5059"
+    root_url "https://github.com/runtimeverification/k/releases/download/v7.1.111/"
+    rebuild 1099
+    sha256 arm64_sonoma: "e0362de1f0e308b73c41d3f188df3b9f3b1d366f46889cac22072b7115521e35"
   end
   depends_on "cmake" => :build
   depends_on "haskell-stack" => :build
