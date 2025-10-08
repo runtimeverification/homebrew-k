@@ -1,6 +1,6 @@
 class Kframework < Formula
-  desc "K Framework Tools 5.0"
-  homepage ""
+  desc "Runtime Verification Inc. brew Package delivering the K Framework Tools 5.0"
+  homepage "https://runtimeverification.com"
   url "https://github.com/runtimeverification/k/releases/download/v7.1.282/kframework-7.1.282-src.tar.gz"
   sha256 "4e248d082348ffcdd539a9f062356dc94ce65f1fe7a98d7e532db53afa7803ea"
   bottle do
@@ -35,17 +35,15 @@ class Kframework < Formula
     # Prevents `install: mkdir ... ghc-7.10.3/lib: File exists`
     # See also: https://github.com/brewsci/homebrew-science/blob/bb52ecc66b6f9fad4d281342139189ae81d7c410/Formula/tamarin-prover.rb#L27
     ENV.deparallelize do
-        # This is a hack to get LLVM off the PATH when building:
-        # https://github.com/Homebrew/homebrew-core/issues/122863
-        with_env(PATH: ENV["PATH"].sub("#{Formula["llvm@17"].bin}:", "")) do
-
+      # This is a hack to get LLVM off the PATH when building:
+      # https://github.com/Homebrew/homebrew-core/issues/122863
+      with_env(PATH: ENV["PATH"].sub("#{Formula["llvm@17"].bin}:", "")) do
         # We need to run the stack phases _outside_ of
         # Maven to prevent connections from timing out.
         cd "haskell-backend/src/main/native/haskell-backend" do
           system "stack", "setup"
           system "stack", "build"
         end
-
       end
     end
 
